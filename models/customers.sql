@@ -1,7 +1,7 @@
 with customers as (
 
     select
-        id as customer_id,
+        id as CUSTOMER_ID,
         first_name,
         last_name
 
