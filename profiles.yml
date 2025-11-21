@@ -1,0 +1,12 @@
+analytics:              # must match `profile: analytics`
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      role: ACCOUNTADMIN        # or a more restricted role you actually use
+      warehouse: COMPUTE_WH     # or your training warehouse name
+      database: RAW             # your database
+      schema: JAFFLE_SHOP       # existing schema in RAW
+      threads: 4
+      account: ""               # allowed to be blank / dummy for dbt Projects
+      user: ""
