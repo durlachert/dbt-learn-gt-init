@@ -2,10 +2,10 @@ default:
   outputs:
     dev:
       account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
-      database: "{{ env_var('SNOWFLAKE_DATABASE', 'ANALYTICS') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE', 'RAW') }}"
       password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
       role: "{{ env_var('SNOWFLAKE_ROLE', 'ACCOUNTADMIN') }}"
-      schema: "{{ env_var('SNOWFLAKE_SCHEMA', 'PUBLIC') }}"
+      schema: "{{ env_var('SNOWFLAKE_SCHEMA', 'JAFFLE_SHOP') }}"
       threads: 1
       type: snowflake
       user: "{{ env_var('SNOWFLAKE_USER') }}"
