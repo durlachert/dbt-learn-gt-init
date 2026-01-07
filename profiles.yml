@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 default:
   outputs:
     dev:
@@ -11,3 +12,17 @@ default:
       user: "{{ env_var('SNOWFLAKE_USER') }}"
       warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE', 'INGEST') }}"
   target: dev
+=======
+analytics:              # must match `profile: analytics`
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      role: ACCOUNTADMIN        # or a more restricted role you actually use
+      warehouse: COMPUTE_WH     # or your training warehouse name
+      database: RAW             # your database
+      schema: JAFFLE_SHOP       # existing schema in RAW
+      threads: 4
+      account: ""               # allowed to be blank / dummy for dbt Projects
+      user: ""
+>>>>>>> 9502d61816376e2e3ab92ec29099303ec64d03b0

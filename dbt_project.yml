@@ -2,7 +2,12 @@ name: 'jaffle_shop'
 version: '1.0.0'
 config-version: 2
 
+<<<<<<< HEAD
 profile: 'default'
+=======
+# This setting configures which "profile" dbt uses for this project.
+profile: analytics
+>>>>>>> 9502d61816376e2e3ab92ec29099303ec64d03b0
 
 model-paths: ["models"]
 analysis-paths: ["analysis"]

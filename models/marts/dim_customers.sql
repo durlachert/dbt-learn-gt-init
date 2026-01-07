@@ -1,6 +1,15 @@
 with customers as (
 
+<<<<<<< HEAD:models/marts/dim_customers.sql
     select * from {{ref('stg_jaffle_shop_customers')}}
+=======
+    select
+        id as CUSTOMER_ID,
+        first_name,
+        last_name
+
+    from raw.jaffle_shop.customers
+>>>>>>> 9502d61816376e2e3ab92ec29099303ec64d03b0:models/customers.sql
 
 ),
 
