@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: orders
+    description: One record per order, including the order status and total payment amount.
+    columns:
+      - name: order_id
+        description: Primary key. The unique identifier for an order.
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: Foreign key to the customers table.
+        tests:
+          - not_null
+          # FIX: Wrap inputs in 'arguments'
+          - relationships:
+              arguments:
+                to: ref('customers')
+                field: customer_id
+
+      - name: order_date
+        description: The date the order was placed.
+
+      - name: status
+        description: The current status of the order.
+        tests:
+          # FIX: Wrap inputs in 'arguments'
+          - accepted_values:
+              arguments:
+                values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+
+      - name: amount
+        description: The total amount of the order in USD.
+        tests:
+          - not_null
+
+  - name: fct_customers
+    description: One record per customer, including their aggregated order history.
+    columns:
+      - name: customer_id
+        description: Primary key. The unique identifier for a customer.
+        tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: The customer's first name.
+
+      - name: last_name
+        description: The customer's last name.
+
+      - name: first_order_date
+        description: The date of the customer's very first order.
+
+      - name: most_recent_order_date
+        description: The date of the customer's most recent order.
+
+      - name: number_of_orders
+        description: The total count of orders placed by this customer.
+        tests:
+          - not_null

@@ -1,0 +1,7 @@
+id,user_id,order_date,status
+1,1,2018-01-01,placed
+2,1,2018-01-02,placed
+3,2,2018-01-03,placed
+4,3,2018-01-04,placed
+5,3,2018-01-05,placed
+6,3,2018-01-06,placed

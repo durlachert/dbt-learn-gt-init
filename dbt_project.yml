@@ -2,12 +2,7 @@ name: 'jaffle_shop'
 version: '1.0.0'
 config-version: 2
 
-<<<<<<< HEAD
 profile: 'default'
-=======
-# This setting configures which "profile" dbt uses for this project.
-profile: analytics
->>>>>>> 9502d61816376e2e3ab92ec29099303ec64d03b0
 
 model-paths: ["models"]
 analysis-paths: ["analysis"]
@@ -16,17 +11,28 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
-target-path: "target" 
-clean-targets:       
-    - "target"
-    - "dbt_modules"
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
 
+on-run-start:
+  - "CREATE DATABASE IF NOT EXISTS analytics"
+  - "CREATE DATABASE IF NOT EXISTS raw_data"
 
 models:
   jaffle_shop:
+    +database: analytics
+
     staging:
       +materialized: view
-    marts:
-      +materialized: view
+      +schema: raw1
+      +database: raw_data
 
-    
+    marts:
+      +materialized: table
+      +schema: marts
+
+seeds:
+  jaffle_shop:
+    +database: raw_data
